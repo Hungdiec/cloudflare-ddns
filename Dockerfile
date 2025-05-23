@@ -9,5 +9,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY main.py .
 
-# Run the application
-CMD ["python", "main.py"]
+# Run the application with unbuffered output
+CMD ["python", "-u", "main.py"]
