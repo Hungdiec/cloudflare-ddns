@@ -1,0 +1,16 @@
+FROM arm64v8/python:3.11-alpine
+
+WORKDIR /app
+
+# Use lightweight requirements for MikroTik
+COPY requirements.mikrotik.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application
+COPY main.py .
+
+# Set user for MikroTik compatibility  
+USER 1000:1000
+
+# Run with minimal buffering
+CMD ["python", "-u", "main.py"]

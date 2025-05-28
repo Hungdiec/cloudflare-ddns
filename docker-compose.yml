@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cloudflare-ddns:
+    image: yourusername/cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    environment:
+      - CLOUDFLARE_API_TOKEN=your_api_token_here
+      - CLOUDFLARE_ZONE_ID=your_zone_id_here
+      - RECORD_NAMES=example.com,subdomain.example.com
+      - UPDATE_INTERVAL=300
+    restart: unless-stopped
+    network_mode: bridge
